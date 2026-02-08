@@ -1,0 +1,139 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    display: flex;
+    gap: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* === INFO PANEL === */
+.info-panel {
+    width: 200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#dice {
+    font-size: 80px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.1s;
+}
+
+#dice:active {
+    transform: scale(0.9);
+}
+
+#dice-value {
+    font-size: 40px;
+    margin: 10px 0;
+}
+
+/* === THE BOARD === */
+.ludo-board {
+    width: 600px;
+    height: 600px;
+    background-color: white;
+    border: 5px solid #333;
+    display: grid;
+    /* The 15x15 Grid System */
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    position: relative;
+}
+
+/* === HOUSES === */
+.house {
+    border: 2px solid #333;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.red-house {
+    grid-column: 1 / span 6;
+    grid-row: 1 / span 6;
+    background-color: #ff4d4d;
+}
+
+.green-house {
+    grid-column: 10 / span 6;
+    grid-row: 1 / span 6;
+    background-color: #2ecc71;
+}
+
+.blue-house {
+    grid-column: 1 / span 6;
+    grid-row: 10 / span 6;
+    background-color: #3498db;
+}
+
+.yellow-house {
+    grid-column: 10 / span 6;
+    grid-row: 10 / span 6;
+    background-color: #f1c40f;
+}
+
+/* === TOKENS === */
+.token-container {
+    background: white;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    border-radius: 10px;
+}
+
+.token {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid rgba(0,0,0,0.2);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.token.red { background-color: #ff4d4d; }
+.token.green { background-color: #2ecc71; }
+.token.yellow { background-color: #f1c40f; }
+.token.blue { background-color: #3498db; }
+
+/* === CENTER & LANES === */
+.center-zone {
+    grid-column: 7 / span 3;
+    grid-row: 7 / span 3;
+    background: conic-gradient(
+        #2ecc71 0deg 90deg,   /* Green top-right */
+        #f1c40f 90deg 180deg, /* Yellow bottom-right */
+        #3498db 180deg 270deg,/* Blue bottom-left */
+        #ff4d4d 270deg 360deg /* Red top-left */
+    );
+    border: 2px solid #333;
+    /* Triangle overlay logic can be added here */
+}
+
+/* These create the grid lines for the steps */
+.lane-vertical, .lane-horizontal {
+    background-image: 
+        linear-gradient(#333 1px, transparent 1px),
+        linear-gradient(90deg, #333 1px, transparent 1px);
+    background-size: 100% 16.66%, 33.33% 100%; /* Spacing for steps */
+}
+
+.lane-horizontal {
+    background-size: 16.66% 100%, 100% 33.33%;
+}
